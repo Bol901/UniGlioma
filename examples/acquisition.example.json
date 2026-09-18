@@ -1,0 +1,6 @@
+{
+  "scan_t1_bet": ["thin", "axial", 1.0],
+  "scan_t1c_bet": ["thin", "axial", 1.0],
+  "scan_t2_bet": ["thin", "axial", 1.0],
+  "scan_fla_bet": ["thin", "axial", 1.0]
+}

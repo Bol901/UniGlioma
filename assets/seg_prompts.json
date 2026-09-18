@@ -1,0 +1,216 @@
+{
+  "combinations": [
+    {
+      "modality_ids": [
+        0
+      ],
+      "prompts": [
+        "Segment the glioma using the T1-weighted MRI inputs.",
+        "Generate a glioma segmentation map from the T1-weighted MRI inputs.",
+        "Delineate glioma regions in the supplied T1-weighted MRI volumes.",
+        "Produce the tumor label map using the available T1-weighted MRI scans.",
+        "Identify and segment the glioma in the co-registered T1-weighted inputs.",
+        "Create a voxelwise glioma segmentation from the T1-weighted MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        1
+      ],
+      "prompts": [
+        "Segment the glioma using the contrast-enhanced T1-weighted MRI inputs.",
+        "Generate a glioma segmentation map from the contrast-enhanced T1-weighted MRI inputs.",
+        "Delineate glioma regions in the supplied contrast-enhanced T1-weighted MRI volumes.",
+        "Produce the tumor label map using the available contrast-enhanced T1-weighted MRI scans.",
+        "Identify and segment the glioma in the co-registered contrast-enhanced T1-weighted inputs.",
+        "Create a voxelwise glioma segmentation from the contrast-enhanced T1-weighted MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        2
+      ],
+      "prompts": [
+        "Segment the glioma using the T2-weighted MRI inputs.",
+        "Generate a glioma segmentation map from the T2-weighted MRI inputs.",
+        "Delineate glioma regions in the supplied T2-weighted MRI volumes.",
+        "Produce the tumor label map using the available T2-weighted MRI scans.",
+        "Identify and segment the glioma in the co-registered T2-weighted inputs.",
+        "Create a voxelwise glioma segmentation from the T2-weighted MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        3
+      ],
+      "prompts": [
+        "Segment the glioma using the FLAIR MRI inputs.",
+        "Generate a glioma segmentation map from the FLAIR MRI inputs.",
+        "Delineate glioma regions in the supplied FLAIR MRI volumes.",
+        "Produce the tumor label map using the available FLAIR MRI scans.",
+        "Identify and segment the glioma in the co-registered FLAIR inputs.",
+        "Create a voxelwise glioma segmentation from the FLAIR MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        0,
+        1
+      ],
+      "prompts": [
+        "Segment the glioma using the T1-weighted, contrast-enhanced T1-weighted MRI inputs.",
+        "Generate a glioma segmentation map from the T1-weighted, contrast-enhanced T1-weighted MRI inputs.",
+        "Delineate glioma regions in the supplied T1-weighted, contrast-enhanced T1-weighted MRI volumes.",
+        "Produce the tumor label map using the available T1-weighted, contrast-enhanced T1-weighted MRI scans.",
+        "Identify and segment the glioma in the co-registered T1-weighted, contrast-enhanced T1-weighted inputs.",
+        "Create a voxelwise glioma segmentation from the T1-weighted, contrast-enhanced T1-weighted MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        0,
+        2
+      ],
+      "prompts": [
+        "Segment the glioma using the T1-weighted, T2-weighted MRI inputs.",
+        "Generate a glioma segmentation map from the T1-weighted, T2-weighted MRI inputs.",
+        "Delineate glioma regions in the supplied T1-weighted, T2-weighted MRI volumes.",
+        "Produce the tumor label map using the available T1-weighted, T2-weighted MRI scans.",
+        "Identify and segment the glioma in the co-registered T1-weighted, T2-weighted inputs.",
+        "Create a voxelwise glioma segmentation from the T1-weighted, T2-weighted MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        0,
+        3
+      ],
+      "prompts": [
+        "Segment the glioma using the T1-weighted, FLAIR MRI inputs.",
+        "Generate a glioma segmentation map from the T1-weighted, FLAIR MRI inputs.",
+        "Delineate glioma regions in the supplied T1-weighted, FLAIR MRI volumes.",
+        "Produce the tumor label map using the available T1-weighted, FLAIR MRI scans.",
+        "Identify and segment the glioma in the co-registered T1-weighted, FLAIR inputs.",
+        "Create a voxelwise glioma segmentation from the T1-weighted, FLAIR MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        1,
+        2
+      ],
+      "prompts": [
+        "Segment the glioma using the contrast-enhanced T1-weighted, T2-weighted MRI inputs.",
+        "Generate a glioma segmentation map from the contrast-enhanced T1-weighted, T2-weighted MRI inputs.",
+        "Delineate glioma regions in the supplied contrast-enhanced T1-weighted, T2-weighted MRI volumes.",
+        "Produce the tumor label map using the available contrast-enhanced T1-weighted, T2-weighted MRI scans.",
+        "Identify and segment the glioma in the co-registered contrast-enhanced T1-weighted, T2-weighted inputs.",
+        "Create a voxelwise glioma segmentation from the contrast-enhanced T1-weighted, T2-weighted MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        1,
+        3
+      ],
+      "prompts": [
+        "Segment the glioma using the contrast-enhanced T1-weighted, FLAIR MRI inputs.",
+        "Generate a glioma segmentation map from the contrast-enhanced T1-weighted, FLAIR MRI inputs.",
+        "Delineate glioma regions in the supplied contrast-enhanced T1-weighted, FLAIR MRI volumes.",
+        "Produce the tumor label map using the available contrast-enhanced T1-weighted, FLAIR MRI scans.",
+        "Identify and segment the glioma in the co-registered contrast-enhanced T1-weighted, FLAIR inputs.",
+        "Create a voxelwise glioma segmentation from the contrast-enhanced T1-weighted, FLAIR MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        2,
+        3
+      ],
+      "prompts": [
+        "Segment the glioma using the T2-weighted, FLAIR MRI inputs.",
+        "Generate a glioma segmentation map from the T2-weighted, FLAIR MRI inputs.",
+        "Delineate glioma regions in the supplied T2-weighted, FLAIR MRI volumes.",
+        "Produce the tumor label map using the available T2-weighted, FLAIR MRI scans.",
+        "Identify and segment the glioma in the co-registered T2-weighted, FLAIR inputs.",
+        "Create a voxelwise glioma segmentation from the T2-weighted, FLAIR MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        0,
+        1,
+        2
+      ],
+      "prompts": [
+        "Segment the glioma using the T1-weighted, contrast-enhanced T1-weighted, T2-weighted MRI inputs.",
+        "Generate a glioma segmentation map from the T1-weighted, contrast-enhanced T1-weighted, T2-weighted MRI inputs.",
+        "Delineate glioma regions in the supplied T1-weighted, contrast-enhanced T1-weighted, T2-weighted MRI volumes.",
+        "Produce the tumor label map using the available T1-weighted, contrast-enhanced T1-weighted, T2-weighted MRI scans.",
+        "Identify and segment the glioma in the co-registered T1-weighted, contrast-enhanced T1-weighted, T2-weighted inputs.",
+        "Create a voxelwise glioma segmentation from the T1-weighted, contrast-enhanced T1-weighted, T2-weighted MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        0,
+        1,
+        3
+      ],
+      "prompts": [
+        "Segment the glioma using the T1-weighted, contrast-enhanced T1-weighted, FLAIR MRI inputs.",
+        "Generate a glioma segmentation map from the T1-weighted, contrast-enhanced T1-weighted, FLAIR MRI inputs.",
+        "Delineate glioma regions in the supplied T1-weighted, contrast-enhanced T1-weighted, FLAIR MRI volumes.",
+        "Produce the tumor label map using the available T1-weighted, contrast-enhanced T1-weighted, FLAIR MRI scans.",
+        "Identify and segment the glioma in the co-registered T1-weighted, contrast-enhanced T1-weighted, FLAIR inputs.",
+        "Create a voxelwise glioma segmentation from the T1-weighted, contrast-enhanced T1-weighted, FLAIR MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        0,
+        2,
+        3
+      ],
+      "prompts": [
+        "Segment the glioma using the T1-weighted, T2-weighted, FLAIR MRI inputs.",
+        "Generate a glioma segmentation map from the T1-weighted, T2-weighted, FLAIR MRI inputs.",
+        "Delineate glioma regions in the supplied T1-weighted, T2-weighted, FLAIR MRI volumes.",
+        "Produce the tumor label map using the available T1-weighted, T2-weighted, FLAIR MRI scans.",
+        "Identify and segment the glioma in the co-registered T1-weighted, T2-weighted, FLAIR inputs.",
+        "Create a voxelwise glioma segmentation from the T1-weighted, T2-weighted, FLAIR MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        1,
+        2,
+        3
+      ],
+      "prompts": [
+        "Segment the glioma using the contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI inputs.",
+        "Generate a glioma segmentation map from the contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI inputs.",
+        "Delineate glioma regions in the supplied contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI volumes.",
+        "Produce the tumor label map using the available contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI scans.",
+        "Identify and segment the glioma in the co-registered contrast-enhanced T1-weighted, T2-weighted, FLAIR inputs.",
+        "Create a voxelwise glioma segmentation from the contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI volumes."
+      ]
+    },
+    {
+      "modality_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "prompts": [
+        "Segment the glioma using the T1-weighted, contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI inputs.",
+        "Generate a glioma segmentation map from the T1-weighted, contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI inputs.",
+        "Delineate glioma regions in the supplied T1-weighted, contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI volumes.",
+        "Produce the tumor label map using the available T1-weighted, contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI scans.",
+        "Identify and segment the glioma in the co-registered T1-weighted, contrast-enhanced T1-weighted, T2-weighted, FLAIR inputs.",
+        "Create a voxelwise glioma segmentation from the T1-weighted, contrast-enhanced T1-weighted, T2-weighted, FLAIR MRI volumes."
+      ]
+    }
+  ]
+}

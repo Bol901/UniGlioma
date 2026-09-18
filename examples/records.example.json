@@ -1,0 +1,6 @@
+[
+  {"images": [{"path": "synthetic_study/scan_t1_bet.h5", "modality": 0}], "label_path": "synthetic_study/labels.h5"},
+  {"images": [{"path": "synthetic_study/scan_t1c_bet.h5", "modality": 1}], "label_path": "synthetic_study/labels.h5"},
+  {"images": [{"path": "synthetic_study/scan_t2_bet.h5", "modality": 2}], "label_path": "synthetic_study/labels.h5"},
+  {"images": [{"path": "synthetic_study/scan_fla_bet.h5", "modality": 3}], "label_path": "synthetic_study/labels.h5"}
+]

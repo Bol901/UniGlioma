@@ -1,0 +1,420 @@
+latent_sample: false
+prompt_feature_h5: local_data/prompt_features
+qwen3vl_path: ${UNIGLIOMA_TEXT_MODEL}
+qwen3vl_chat_template: true
+qwen3vl_add_generation_prompt: true
+qwen3vl_layer: -1
+h5_root: local_data/h5
+h5_mode: iso1mm
+h5_mix_prob: 0.5
+skip_missing_h5: false
+train_json: local_data/train.json
+val_json: local_data/val.json
+acq_lookup: local_data/acquisition.json
+spatial_size:
+- 192
+- 192
+- 144
+num_workers: 2
+prefetch_factor: 3
+pin_memory: true
+seed: 42
+task_weights:
+  modality_only: 1.0
+  inpaint: 1.0
+  sr: 1.0
+  missing: 1.0
+  deblur: 1.0
+  dealias: 1.0
+  motion: 1.0
+  seg: 1.0
+cfg_train_states:
+  modality_only:
+    B: 0.1
+    T: 0.9
+  inpaint:
+    B: 0.05
+    T: 0.1
+    R: 0.05
+    F: 0.8
+  sr:
+    B: 0.05
+    T: 0.1
+    R: 0.05
+    F: 0.8
+  missing:
+    B: 0.05
+    T: 0.1
+    R: 0.1
+    F: 0.75
+  deblur:
+    B: 0.05
+    T: 0.1
+    R: 0.05
+    F: 0.8
+  dealias:
+    B: 0.05
+    T: 0.1
+    R: 0.05
+    F: 0.8
+  motion:
+    B: 0.05
+    T: 0.1
+    R: 0.05
+    F: 0.8
+  seg:
+    B: 0.05
+    T: 0.1
+    R: 0.05
+    F: 0.8
+sr_factors:
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- 8
+- 9
+- 10
+sr_absolute_thin_prob: 0.7
+thin_target_one_mm_prob: 0.5
+prompt_exact_input_mm_prob: 0.7
+sr_axis_weights:
+- 2
+- 1
+- 1
+sr_affine_enabled: true
+sr_affine_max_angle_deg: 15
+inpaint_dilate: 2
+inpaint_size_bin_edges:
+- 0.025
+inpaint_size_bin_names:
+- medium
+- large
+inpaint_size_bin_weights:
+- 1
+- 1
+inpaint_large_oversample: 2.0
+inpaint_case_max_tries: 64
+inpaint_place_max_tries: 48
+inpaint_placement_fail_blacklist: 3
+inpaint_pseudo_healthy_prob: 0.1
+inpaint_min_brain_frac: 0.6
+inpaint_margin: 2
+inpaint_contralateral_large: true
+inpaint_contralateral_axis: 2
+inpaint_region_weight: 3.0
+inpaint_lesion_prob: 0.0
+inpaint_cavity_class_ids:
+- 1
+inpaint_tumor_class_ids:
+- 2
+inpaint_tumor_dominance_frac: 0.15
+num_modalities: 5
+use_uncond_modality_slot: true
+modality_names:
+  0: T1
+  1: T1 Contrast enhanced
+  2: T2
+  3: T2 Flair
+  4: glioma segmentation
+empty_text_uses_modality: false
+text_max_length: 256
+text_fixed_length: 256
+vae_ckpt: ${UNIGLIOMA_VAE_CHECKPOINT}
+vae:
+  in_channels: 1
+  out_channels: 1
+  patch_size:
+  - 8
+  - 8
+  - 8
+  dim: 1280
+  depth_enc: 10
+  depth_dec: 10
+  heads: 16
+  dim_head: 80
+  mlp_mult: 4.0
+  latent_dim: 16
+  out_activation: tanh
+mmdit:
+  in_channels: 16
+  latent_shape:
+  - 24
+  - 24
+  - 18
+  patch_size:
+  - 2
+  - 2
+  - 2
+  region_mask_channels: 1
+  max_refs: 4
+  width: 1728
+  text_hidden: 2048
+  heads: 24
+  mlp_ratio: 2.6667
+  depth_double: 10
+  depth_single: 20
+  timestep_embed_dim: 256
+  pool_text_for_vec: true
+  rope_mode: axial3d
+  rope_theta_base: 10000.0
+  dropout: 0.0
+  use_qk_norm: true
+  mlp_variant: swiglu
+  arch_version: 8
+  attn_impl: sdpa
+  grad_checkpoint: true
+  seg_head:
+    enabled: true
+    label_h5_root: local_data/h5
+    num_classes: 4
+    tap_layer: 16
+    channels:
+    - 256
+    - 128
+    - 64
+    - 32
+    - 16
+    full_shape:
+    - 192
+    - 192
+    - 144
+    downsample: 2
+    lambda: 0.2
+    t_weight: linear
+    region_weight: 0.0
+    class_weights:
+    - 0.1
+    - 1.0
+    - 1.0
+    - 1.0
+  use_ref_slab: true
+parallel: ddp
+compile_mmdit: false
+compile_vae: false
+ddp_static_graph: false
+ddp_find_unused_parameters: true
+fsdp:
+  sharding: SHARD_GRAD_OP
+  wrap_policy: transformer
+  compute_dtype: bf16
+  param_dtype: bf16
+  reduce_dtype: bf16
+  use_orig_params: true
+  sync_module_states: true
+  limit_all_gathers: true
+  activation_ckpt: false
+lr: 5.0e-05
+betas:
+- 0.9
+- 0.95
+weight_decay: 0.01
+grad_clip: 1.0
+total_steps: 200000
+lr_schedule: cosine
+warmup_steps: 1000
+lr_min: 5.0e-06
+timestep_sampling: logit_normal
+timestep_logit_mean: 0.0
+timestep_logit_std: 1.0
+timestep_eps: 1.0e-05
+use_ema: true
+ema_decay: 0.9999
+ema_start_step: 100
+ema_cpu: false
+batch_size: 1
+ckpt_dir: ${HF_HOME}/hub/uniglioma-training
+log_every: 50
+debug_logging: false
+ckpt_every: 5000
+ckpt_latest_every: 5000
+infer_every: 0
+keep_last_checkpoints: 5
+resume: ''
+resume_exp: ''
+resume_step: latest
+run_name: uniglioma
+infer:
+  steps: 50
+  schedule: power
+  t_min: 0.001
+  rho: 3.0
+  fid_enable: false
+  fid_weights: ''
+  task_cfg:
+    mask_guide:
+      text: 3.0
+      ref: 3.0
+    inpaint:
+      text: 4.0
+      ref: 1.0
+    sr:
+      text: 5.0
+      ref: 1.0
+    missing:
+      text: 4.0
+      ref: 1.25
+    whole_brain:
+      text: 4.0
+      ref: 1.0
+    deblur:
+      text: 4.0
+      ref: 1.0
+    dealias:
+      text: 4.0
+      ref: 1.0
+    motion:
+      text: 4.0
+      ref: 1.0
+    sr_native_thick:
+      text: 5.0
+      ref: 1.0
+    deblur_native_thick:
+      text: 4.0
+      ref: 1.0
+    dealias_native_thick:
+      text: 4.0
+      ref: 1.0
+    seg_1mod:
+      text: 4.0
+      ref: 1.25
+    seg_2mod:
+      text: 4.0
+      ref: 1.25
+    seg_3mod:
+      text: 4.0
+      ref: 1.25
+    seg_4mod:
+      text: 4.0
+      ref: 1.25
+    modality_only:
+      text: 4.0
+      ref: 1.0
+    inpaint_tumor:
+      text: 4.0
+      ref: 1.0
+    inpaint_lesion:
+      text: 4.0
+      ref: 1.0
+    seg:
+      text: 4.0
+      ref: 1.25
+  cfg_text: 4.0
+aux_seg_supervision: true
+seg_ref_count_weights:
+  1: 1.0
+  2: 1.0
+  3: 1.0
+  4: 1.0
+acq_thickness_drop_prob: 0.15
+sr_up_orders:
+- 0
+sr_up_order_weights:
+- 1
+deblur_sigma_range:
+- 0.8
+- 2.5
+restore_composite_prob: 0.3
+dealias_factors:
+- 2
+- 3
+- 4
+dealias_factor_weights:
+- 1
+- 1
+- 1
+dealias_axis_weights:
+- 1
+- 1
+- 1
+whole_brain_axis_weights:
+- 1
+- 1
+- 1
+whole_brain_nonaxial_remove_range:
+- 0.3333333333
+- 0.5
+whole_brain_axial_remove_range:
+- 0.2
+- 0.5
+motion_n_poses: 3
+motion_planes_per_pose: 6
+motion_max_angle_deg: 3.0
+motion_trans_ap_mm: 2.5
+motion_trans_si_mm: 0.75
+motion_dc_anchor: 4
+motion_corrupt_fraction_range:
+- 0.25
+- 0.5
+motion_active_poses: 0
+flow_region_weights:
+  mask_guide: 0.0
+  inpaint: 3.0
+  whole_brain: 3.0
+  seg: 3.0
+seg_prompt_variants_path: assets/seg_prompts.json
+use_wandb: false
+init_checkpoint: ''
+curriculum:
+  default_preset: full
+  presets:
+    foundation:
+      aux_seg_supervision: false
+      task_weights:
+        modality_only: 1.0
+      cfg_train_states:
+        modality_only:
+          B: 0.1
+          T: 0.9
+    full:
+      aux_seg_supervision: true
+      task_weights:
+        modality_only: 1.0
+        inpaint: 1.0
+        sr: 1.0
+        missing: 1.0
+        deblur: 1.0
+        dealias: 1.0
+        motion: 1.0
+        seg: 1.0
+      cfg_train_states:
+        modality_only:
+          B: 0.1
+          T: 0.9
+        inpaint:
+          B: 0.05
+          T: 0.1
+          R: 0.05
+          F: 0.8
+        sr:
+          B: 0.05
+          T: 0.1
+          R: 0.05
+          F: 0.8
+        missing:
+          B: 0.05
+          T: 0.1
+          R: 0.1
+          F: 0.75
+        deblur:
+          B: 0.05
+          T: 0.1
+          R: 0.05
+          F: 0.8
+        dealias:
+          B: 0.05
+          T: 0.1
+          R: 0.05
+          F: 0.8
+        motion:
+          B: 0.05
+          T: 0.1
+          R: 0.05
+          F: 0.8
+        seg:
+          B: 0.05
+          T: 0.1
+          R: 0.05
+          F: 0.8

@@ -1,0 +1,45 @@
+# Runtime and local configuration
+local_data/
+outputs/
+runs/
+logs/
+wandb/
+checkpoints/
+configs/local*.yaml
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+# Weights, optimizer states, feature caches, volumes, and sample images
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.nii
+*.nii.gz
+*.dcm
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.pdf
+*.csv
+*.tsv
+*.jsonl
+*.log
+*.zip
+*.tar*
+# Only the generic catalog and fabricated schema examples belong in Git.
+*.json
+!assets/seg_prompts.json
+!examples/records.example.json
+!examples/acquisition.example.json
